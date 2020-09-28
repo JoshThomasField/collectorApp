@@ -1,0 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-size: 62.5%;
+}
+
+.collection {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.item {
+    text-align: center;
+    width: 200px;
+    margin: 20px;
+    border: 1px solid black;
+}

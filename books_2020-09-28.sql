@@ -29,7 +29,7 @@ CREATE TABLE `booksCollected` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `author` varchar(255) NOT NULL DEFAULT '',
-  `catergory` varchar(255) NOT NULL DEFAULT '',
+  `category` varchar(255) NOT NULL DEFAULT '',
   `released` year(4) NOT NULL,
   `imgUrl` text,
   PRIMARY KEY (`id`)
