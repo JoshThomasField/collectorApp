@@ -14,6 +14,16 @@ $books = getBooksFromDb($db);
     <title>Book Collector</title>
 </head>
 <body>
+<nav>
+    <div class="mobile-nav">
+        <a href="index.php"><img class="logo" src="signature(1).png" alt="Logo"></a>
+        <i class="fas fa-bars"></i>
+        <div class="nav-links">
+            <a href="addbook.php">Add Books</a>
+        </div>
+    </div>
+</nav>
+<a href="addbook.php">Link Here</a>
 <div class="collection">
     <?php
     foreach($books as $book) {

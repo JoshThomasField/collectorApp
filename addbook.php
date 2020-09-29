@@ -1,8 +1,6 @@
 <?php
 require 'functions.php';
 
-?>
-<?php
 $db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
@@ -25,22 +23,33 @@ if (!empty($_POST)) {
     <title>Book Collector</title>
 </head>
 <body>
+<nav>
+    <div class="mobile-nav">
+        <a href="index.php"><img class="logo" src="signature(1).png" alt="Logo"></a>
+        <i class="fas fa-bars"></i>
+        <div class="nav-links">
+            <a href="index.php">View Collection</a>
+        </div>
+    </div>
+</nav>
 <a href="index.php">This is a link</a>
-<form action="" method="POST">
-    <input type="text" name="bookName" placeholder="Book name"><br><br>
-    <input type="text" name="author" placeholder="Author"><br><br>
-    <input type="text" name="category" placeholder="Category">
-    <input type="number" name="released" placeholder="Release year">
-    <input type="submit" value="Submit">
-    <?php
-    // write error messages
-    if (isset($_GET['error']) && $_GET['error'] == 1) {
-        echo 'Failed to add to database';
-    } elseif (isset($_GET['error']) && $_GET['error'] == 2) {
-        echo 'Form is missing fields';
-    }
-    ?>
-</form>
+<div class="addBookForm">
+    <form action="" method="POST">
+        <input type="text" name="bookName" placeholder="Book name"><br><br>
+        <input type="text" name="author" placeholder="Author"><br><br>
+        <input type="text" name="category" placeholder="Category"><br><br>
+        <input type="number" name="released" placeholder="Release year"><br><br>
+        <input type="submit" value="Add Book">
+        <?php
+        // write error messages
+        if (isset($_GET['error']) && $_GET['error'] == 1) {
+            echo 'Failed to add to database';
+        } elseif (isset($_GET['error']) && $_GET['error'] == 2) {
+            echo 'Form is missing fields';
+        }
+        ?>
+    </form>
+</div>
 
 </body>
 </html>
