@@ -1,3 +1,8 @@
+<?php
+    require 'functions.php';
+
+    $books = getBooksFromDb();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,13 +15,9 @@
 <body>
     <div class="collection">
     <?php
-    require 'functions.php';
-
-    $books = returnBooks();
     foreach($books as $book) {
-        echo displayBooks($book);
+        echo displayBook($book);
     }
-
     ?>
     </div>
 </body>
