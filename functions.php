@@ -1,5 +1,8 @@
 <?php
 
+$db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
 function getBooksFromDb(PDO $db): array
 {
     $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected`');
