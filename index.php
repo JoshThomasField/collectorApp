@@ -39,6 +39,8 @@ function testfun()
 }
 
 if(array_key_exists('test',$_POST)){
+    $var = $_POST['id'];
+    var_dump($var);
     testfun();
 }
 

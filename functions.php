@@ -24,7 +24,7 @@ function displayBook(array $book): string
             '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
             '<form method="post">
-            <input type="submit" name="test" id="test" value="Delete"/><br/>
+            <input type="submit" name="test" id="'.$book['name'].'" value="Delete"/><br/>
             </form>' .
             '</div>';
     } else {
