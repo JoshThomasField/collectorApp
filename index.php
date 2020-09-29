@@ -1,7 +1,8 @@
 <?php
     require 'functions.php';
-
-    $books = getBooksFromDb();
+    $db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $books = getBooksFromDb($db);
 ?>
 <!DOCTYPE html>
 <html lang="en">
