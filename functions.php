@@ -11,7 +11,7 @@ function returnBooks():array
 
 function displayBooks(array $book):string
 {
-    if(array_key_exists("name", $book) && array_key_exists("author", $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
+    if(array_key_exists('name', $book) && array_key_exists('author', $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
         return '<div class="item">' .
             '<div class="bookDetails">' .
             '<p>' . $book['name'] . '</p>' .
