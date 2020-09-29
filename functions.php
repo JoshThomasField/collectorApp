@@ -1,6 +1,6 @@
 <?php
 
-function returnBooks(PDO $db):array
+function getBooksFromDb(PDO $db):array
 {
     $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected`');
     $query->execute();
@@ -8,7 +8,7 @@ function returnBooks(PDO $db):array
     return $result;
 }
 
-function displayBooks(array $book):string
+function displayBook(array $book):string
 {
     if(array_key_exists('name', $book) && array_key_exists('author', $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
         return '<div class="item">' .
