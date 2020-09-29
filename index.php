@@ -1,7 +1,6 @@
 <?php
 require 'functions.php';
-$db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = startDb('books');
 $books = getBooksFromDb($db);
 ?>
 <!DOCTYPE html>
@@ -32,5 +31,17 @@ $books = getBooksFromDb($db);
     }
     ?>
 </div>
+<?php
+
+function testfun()
+{
+    echo "Your test function on button click is working";
+}
+
+if(array_key_exists('test',$_POST)){
+    testfun();
+}
+
+?>
 </body>
 </html>

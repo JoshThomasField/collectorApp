@@ -1,4 +1,9 @@
 <?php
+function startDb(string $dbName): PDO {
+    $db = new PDO('mysql:host=db;dbname='.$dbName, 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $db;
+}
 
 function getBooksFromDb(PDO $db): array
 {
@@ -18,6 +23,9 @@ function displayBook(array $book): string
             '<p class="bookCategory">' . $book['category'] . '</p>' .
             '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
+            '<form method="post">
+            <input type="submit" name="test" id="test" value="Delete"/><br/>
+            </form>' .
             '</div>';
     } else {
         return '';

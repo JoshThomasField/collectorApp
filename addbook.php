@@ -1,8 +1,7 @@
 <?php
 require 'functions.php';
 
-$db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+$db = startDb('books');
 
 if (!empty($_POST)) {
     if(!empty($_POST['bookName']) && !empty($_POST['author']) && !empty($_POST['category']) && !empty($_POST['released'])) {
