@@ -7,7 +7,7 @@ class index extends TestCase
     public function testSuccessDisplayBook()
     {
         $input = ['name' => 'Hello', 'author' => 'Talon Edge', 'category' => 'evil', 'released' => '2000'];
-        $expectedOutput = '<div class="item"><div class="bookDetails"><p>Hello</p><p>Talon Edge</p><p>evil</p><p>2000</p></div></div>';
+        $expectedOutput = '<div class="item"><div class="bookDetails"><p class="bookHeading">Hello</p><p class="bookAuthor">Talon Edge</p><p class="bookCategory">evil</p><p class="releaseYear">2000</p></div></div>';
         $result = displayBook($input);
         $this->assertEquals($expectedOutput, $result);
     }
@@ -39,6 +39,6 @@ class index extends TestCase
     {
         $this->expectException(TypeError::class);
         $input = 'hi';
-        displayBooks($input);
+        displayBook($input);
     }
 }

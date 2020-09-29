@@ -38,6 +38,7 @@ body {
 .addBookForm form input {
     padding: 10px 5px;
     width: 100%;
+    font-size: 1.2rem;
 }
 .bookHeading {
     font-size: 1.2rem;
