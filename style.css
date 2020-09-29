@@ -12,8 +12,18 @@ body {
 }
 
 .item {
+    background-image: url("bookbackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    width: 200px;
+    width: 300px;
+    height: 200px;
     margin: 20px;
-    border: 1px solid black;
+}
+.bookDetails {
+    margin-top: -20px;
 }

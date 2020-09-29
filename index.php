@@ -8,11 +8,14 @@
     <title>Book Collector</title>
 </head>
 <body>
+<a href="addbook.php">This is a link</a>
     <div class="collection">
     <?php
     require 'functions.php';
+    $db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
-    $books = returnBooks();
+    $books = returnBooks($db);
     foreach($books as $book) {
         echo displayBooks($book);
     }
