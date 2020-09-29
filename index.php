@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="normalize.css" rel="stylesheet">
-    <title>Title</title>
+    <title>Book Collector</title>
 </head>
 <body>
     <div class="collection">
