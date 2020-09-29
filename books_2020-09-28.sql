@@ -38,7 +38,7 @@ CREATE TABLE `booksCollected` (
 LOCK TABLES `booksCollected` WRITE;
 /*!40000 ALTER TABLE `booksCollected` DISABLE KEYS */;
 
-INSERT INTO `booksCollected` (`id`, `name`, `author`, `catergory`, `released`, `imgUrl`)
+INSERT INTO `booksCollected` (`id`, `name`, `author`, `category`, `released`, `imgUrl`)
 VALUES
 	(1,'Dune','Frank Herbert','Science Fiction','1965',NULL),
 	(2,'Harry Potter and The Chamber of Secrets','J. K. Rowling','Fantasy','1998',NULL),
