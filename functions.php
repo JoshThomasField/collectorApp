@@ -7,7 +7,7 @@ function startDb(string $dbName): PDO {
 
 function getBooksFromDb(PDO $db): array
 {
-    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted`=0');
+    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted` = 0');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
@@ -15,7 +15,10 @@ function getBooksFromDb(PDO $db): array
 
 function displayBook(array $book): string
 {
-    if(array_key_exists('name', $book) && array_key_exists('author', $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
+    if(array_key_exists('name', $book)
+        && array_key_exists('author', $book)
+        && array_key_exists('category', $book)
+        && array_key_exists('released', $book)) {
         return '<div class="item">' .
             '<div class="bookDetails">' .
             '<p class="bookHeading">' . $book['name'] . '</p>' .
@@ -29,18 +32,6 @@ function displayBook(array $book): string
             '</div>';
     } else {
         return '';
-    }
-}
-
-function addBook(array $bookInfo, PDO $db, $isDeleted=0 )
-{
-    if(array_key_exists('name', $bookInfo) && array_key_exists('author', $bookInfo) && array_key_exists('category', $bookInfo) && array_key_exists('released', $bookInfo)) {
-        $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`, `deleted`) VALUES (?, ?, ?, ?, ?)');
-        if ($query->execute([$bookInfo['name'], $bookInfo['author'], $bookInfo['category'], $bookInfo['released'], $isDeleted])) {
-            header("Location: addbook.php?success=1");
-        } else {
-            header("Location: addbook.php?error=1");
-        }
     }
 }
 
