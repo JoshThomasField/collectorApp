@@ -8,8 +8,8 @@ if (
     array_key_exists('category', $_POST) &&
     array_key_exists('released', $_POST)
 ) {
-    $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`, `deleted`) VALUES (:bookname, :author, :category, :releaseYear , :deleteStatus)');
-    if ($query->execute([':bookname' => $_POST['bookName'], ':author' => $_POST['author'], ':category' => $_POST['category'], ':releaseYear' => $_POST['released'], ':deleteStatus' => 0])) {
+    $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`) VALUES (:bookName, :author, :category, :released)');
+    if ($query->execute($_POST)) {
         header("Location: addbook.php?success=1");
     } else {
         header("Location: addbook.php?error=1");
