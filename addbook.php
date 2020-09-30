@@ -1,16 +1,6 @@
 <?php
 require 'functions.php';
 
-$db = startDb('books');
-
-if (!empty($_POST)) {
-    if(!empty($_POST['bookName']) && !empty($_POST['author']) && !empty($_POST['category']) && !empty($_POST['released'])) {
-        $bookInfo = ['name' => $_POST['bookName'], 'author' => $_POST['author'], 'category' => $_POST['category'], 'released' => $_POST['released']];
-        addBook($bookInfo, $db);
-    } else {
-        header("Location: addbook.php?error=2");
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +23,7 @@ if (!empty($_POST)) {
 </nav>
 <a href="index.php">This is a link</a>
 <div class="addBookForm">
-    <form action="" method="POST">
+    <form action="addbookfunction.php" method="POST">
         <input type="text" name="bookName" placeholder="Book name"><br><br>
         <input type="text" name="author" placeholder="Author"><br><br>
         <input type="text" name="category" placeholder="Category"><br><br>

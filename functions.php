@@ -7,7 +7,7 @@ function startDb(string $dbName): PDO {
 
 function getBooksFromDb(PDO $db): array
 {
-    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected`');
+    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted`=0');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
@@ -32,19 +32,21 @@ function displayBook(array $book): string
     }
 }
 
-function addBook(array $bookInfo, PDO $db)
+function addBook(array $bookInfo, PDO $db, $isDeleted=0 )
 {
-    $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`) VALUES (?, ?, ?, ?)');
-    if ($query->execute([$bookInfo['name'], $bookInfo['author'], $bookInfo['category'], $bookInfo['released']])) {
-        header("Location: addbook.php?success=1");
-    } else {
-        header("Location: addbook.php?error=1");
+    if(array_key_exists('name', $bookInfo) && array_key_exists('author', $bookInfo) && array_key_exists('category', $bookInfo) && array_key_exists('released', $bookInfo)) {
+        $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`, `deleted`) VALUES (?, ?, ?, ?, ?)');
+        if ($query->execute([$bookInfo['name'], $bookInfo['author'], $bookInfo['category'], $bookInfo['released'], $isDeleted])) {
+            header("Location: addbook.php?success=1");
+        } else {
+            header("Location: addbook.php?error=1");
+        }
     }
 }
 
 function deleteBookFromDb(string $toDelete, PDO $db)
 {
-    $query = $db->prepare('DELETE FROM `booksCollected` WHERE `name`=?');
+    $query = $db->prepare('UPDATE `booksCollected` SET `deleted` = 1 WHERE `name` = (?)');
     $query->execute([$toDelete]);
     header("Location: index.php");
 }
