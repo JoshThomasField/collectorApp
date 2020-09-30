@@ -15,10 +15,12 @@ function getBooksFromDb(PDO $db): array
 
 function displayBook(array $book): string
 {
-    if(array_key_exists('name', $book)
-        && array_key_exists('author', $book)
-        && array_key_exists('category', $book)
-        && array_key_exists('released', $book)) {
+    if(
+        array_key_exists('name', $book) &&
+        array_key_exists('author', $book) &&
+        array_key_exists('category', $book) &&
+        array_key_exists('released', $book)
+    ) {
         return '<div class="item">' .
             '<div class="bookDetails">' .
             '<p class="bookHeading">' . $book['name'] . '</p>' .
