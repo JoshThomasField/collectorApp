@@ -45,6 +45,8 @@ if (!empty($_POST)) {
             echo 'Failed to add to database';
         } elseif (isset($_GET['error']) && $_GET['error'] == 2) {
             echo 'Form is missing fields';
+        } elseif (isset($_GET['success']) && $_GET['success'] == 1) {
+            echo 'Successfully added to database.';
         }
         ?>
     </form>
