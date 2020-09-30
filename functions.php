@@ -23,8 +23,8 @@ function displayBook(array $book): string
             '<p class="bookCategory">' . $book['category'] . '</p>' .
             '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
-            '<form method="post">
-            <input type="submit" name="test" id="'.$book['name'].'" value="Delete"/><br/>
+            '<form method="POST"><input type="hidden" name="bookToBeDeleted" value="'.$book['name'].'">
+            <input type="submit" name="delete" value="Delete"/><br/>
             </form>' .
             '</div>';
     } else {
@@ -36,9 +36,16 @@ function addBook(array $bookInfo, PDO $db)
 {
     $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`) VALUES (?, ?, ?, ?)');
     if ($query->execute([$bookInfo['name'], $bookInfo['author'], $bookInfo['category'], $bookInfo['released']])) {
-        header("Location: addbook.php");
+        header("Location: addbook.php?success=1");
     } else {
         header("Location: addbook.php?error=1");
     }
+}
+
+function deleteBookFromDb(string $toDelete, PDO $db)
+{
+    $query = $db->prepare('DELETE FROM `booksCollected` WHERE `name`=?');
+    $query->execute([$toDelete]);
+    header("Location: index.php");
 }
 ?>
