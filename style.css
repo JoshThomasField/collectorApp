@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap');
+
 * {
     box-sizing: border-box;
 }
+
+html, body {
+    height: 100%;
+}
+
 body {
     font-size: 62.5%;
     background-color: darkseagreen;
+    display: flex;
+    flex-direction: column;
 }
 
 .collection {
@@ -27,7 +36,9 @@ body {
     height: 200px;
     margin: 20px;
 }
+
 .bookDetails {
+    font-family: Cormorant Garamond;
     margin-top: -40px;
 }
 
@@ -36,11 +47,13 @@ body {
     width: 80%;
     max-width: 400px;
 }
+
 .addBookForm form input {
     padding: 10px 5px;
     width: 100%;
     font-size: 1.2rem;
 }
+
 .bookHeading {
     font-size: 1.2rem;
 }
@@ -48,6 +61,7 @@ body {
 .bookAuthor {
     font-size: 0.9rem;
 }
+
 nav {
     position: -webkit-sticky;
     position: fixed;
@@ -55,6 +69,7 @@ nav {
     width: 100%;
     z-index: 20;
 }
+
 .mobile-nav {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -82,7 +97,7 @@ nav {
     font-size: 1rem;
     color: whitesmoke;
     text-decoration: none;
-    padding: 20px;
+    padding: 5px 20px;
 }
 
 .nav-links a:hover {
@@ -96,4 +111,27 @@ nav {
     font-size: 2rem;
     color: 	#FFFFFF;
     margin-right: 10px;
+}
+
+footer {
+    width: 100%;
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #0d1321;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.content {
+    flex: 1 0 auto;
 }
