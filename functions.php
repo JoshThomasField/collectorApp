@@ -7,7 +7,7 @@ function startDb(string $dbName): PDO {
 
 function getBooksFromDb(PDO $db): array
 {
-    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected`');
+    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted` = 0');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
@@ -15,7 +15,12 @@ function getBooksFromDb(PDO $db): array
 
 function displayBook(array $book): string
 {
-    if(array_key_exists('name', $book) && array_key_exists('author', $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
+    if(
+        array_key_exists('name', $book) &&
+        array_key_exists('author', $book) &&
+        array_key_exists('category', $book) &&
+        array_key_exists('released', $book)
+    ) {
         return '<div class="item">' .
             '<div class="bookDetails">' .
             '<p class="bookHeading">' . $book['name'] . '</p>' .
@@ -23,8 +28,8 @@ function displayBook(array $book): string
             '<p class="bookCategory">' . $book['category'] . '</p>' .
             '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
-            '<form method="post">
-            <input type="submit" name="test" id="'.$book['name'].'" value="Delete"/><br/>
+            '<form method="POST"><input type="hidden" name="bookToBeDeleted" value="'.$book['name'].'">
+            <input type="submit" name="delete" value="Delete"/><br/>
             </form>' .
             '</div>';
     } else {
@@ -32,13 +37,10 @@ function displayBook(array $book): string
     }
 }
 
-function addBook(array $bookInfo, PDO $db)
+function deleteBookFromDb(string $toDelete, PDO $db)
 {
-    $query = $db->prepare('INSERT INTO `booksCollected` (`name`, `author`, `category`, `released`) VALUES (?, ?, ?, ?)');
-    if ($query->execute([$bookInfo['name'], $bookInfo['author'], $bookInfo['category'], $bookInfo['released']])) {
-        header("Location: addbook.php");
-    } else {
-        header("Location: addbook.php?error=1");
-    }
+    $query = $db->prepare('UPDATE `booksCollected` SET `deleted` = 1 WHERE `name` = (?)');
+    $query->execute([$toDelete]);
+    header("Location: index.php");
 }
 ?>

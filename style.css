@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap');
+
 * {
     box-sizing: border-box;
+}
+html, body {
+    height: 100%;
 }
 body {
     font-size: 62.5%;
     background-color: darkseagreen;
+    display: flex;
+    flex-direction: column;
 }
 
 .collection {
@@ -28,6 +35,7 @@ body {
     margin: 20px;
 }
 .bookDetails {
+    font-family: Cormorant Garamond;
     margin-top: -40px;
 }
 
@@ -82,7 +90,7 @@ nav {
     font-size: 1rem;
     color: whitesmoke;
     text-decoration: none;
-    padding: 20px;
+    padding: 5px 20px;
 }
 
 .nav-links a:hover {
@@ -96,4 +104,27 @@ nav {
     font-size: 2rem;
     color: 	#FFFFFF;
     margin-right: 10px;
+}
+
+footer {
+    width: 100%;
+    z-index: 20;
+    flex-shrink: 0;
+}
+
+.footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #0d1321;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.content {
+    flex: 1 0 auto;
 }

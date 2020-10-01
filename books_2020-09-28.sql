@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.31)
 # Database: books
-# Generation Time: 2020-09-28 11:12:14 +0000
+# Generation Time: 2020-09-30 12:34:21 +0000
 # ************************************************************
 
 
@@ -32,20 +32,25 @@ CREATE TABLE `booksCollected` (
   `category` varchar(255) NOT NULL DEFAULT '',
   `released` year(4) NOT NULL,
   `imgUrl` text,
-  PRIMARY KEY (`id`)
+  `deleted` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `bookNameUnique` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 LOCK TABLES `booksCollected` WRITE;
 /*!40000 ALTER TABLE `booksCollected` DISABLE KEYS */;
 
-INSERT INTO `booksCollected` (`id`, `name`, `author`, `category`, `released`, `imgUrl`)
+INSERT INTO `booksCollected` (`id`, `name`, `author`, `category`, `released`, `imgUrl`, `deleted`)
 VALUES
-	(1,'Dune','Frank Herbert','Science Fiction','1965',NULL),
-	(2,'Harry Potter and The Chamber of Secrets','J. K. Rowling','Fantasy','1998',NULL),
-	(3,'Harry Potter and The Prisoner Of Azkhaban','J. K. Rowling','Fantasy','1999',NULL),
-	(4,'Harry Potter and the Goblet Of Fire','J. K. Rowling','Fantasy','2000',NULL),
-	(5,'Harry Potter and the Order of the Pheonix','J. K. Rowling','Fantasy','2003',NULL),
-	(6,'Harry Potter and the Half Blood Prince','J. K. Rowling','Fantasy','2005',NULL);
+	(1,'Dune','Frank Herbert','Science Fiction','1965',NULL,0),
+	(2,'Harry Potter and The Chamber of Secrets','J. K. Rowling','Fantasy','1998',NULL,0),
+	(3,'Harry Potter and The Prisoner Of Azkhaban','J. K. Rowling','Fantasy','1999',NULL,0),
+	(4,'Harry Potter and the Goblet Of Fire','J. K. Rowling','Fantasy','2000',NULL,0),
+	(64,'Left Over Pie','Anna Pitt','Non-Fiction','2014',NULL,0),
+	(65,'I Am Number Four','Pittacus Lore','Young Adult','2011',NULL,1),
+	(67,'Clean Code','Harry Potter','Non-Fiction','1997',NULL,1),
+	(69,'Hello','William','Non-Fiction','1997',NULL,1),
+	(70,'Yes','Yes','Yes','1996',NULL,0);
 
 /*!40000 ALTER TABLE `booksCollected` ENABLE KEYS */;
 UNLOCK TABLES;
