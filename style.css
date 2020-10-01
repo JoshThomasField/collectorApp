@@ -3,17 +3,97 @@
 }
 body {
     font-size: 62.5%;
+    background-color: darkseagreen;
 }
 
 .collection {
+    margin-top: 60px;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
 }
 
 .item {
+    background-image: url("bookbackground.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    width: 200px;
+    width: 300px;
+    height: 200px;
     margin: 20px;
-    border: 1px solid black;
+}
+.bookDetails {
+    margin-top: -40px;
+}
+
+.addBookForm {
+    margin: 80px auto;
+    width: 80%;
+    max-width: 400px;
+}
+.addBookForm form input {
+    padding: 10px 5px;
+    width: 100%;
+    font-size: 1.2rem;
+}
+.bookHeading {
+    font-size: 1.2rem;
+}
+
+.bookAuthor {
+    font-size: 0.9rem;
+}
+nav {
+    position: -webkit-sticky;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+.mobile-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    background-color: #0d1321;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.logo {
+    margin: 10px;
+    width: auto;
+    height: 30px;
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    -webkit-animation: slideIn 4s infinite;
+    animation: slideIn 4s infinite;
+}
+
+.nav-links a {
+    font-size: 1rem;
+    color: whitesmoke;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.nav-links a:hover {
+    color: #FFA500;
+    -webkit-transition: color 1s ease;
+    -o-transition: color 1s ease;
+    transition: color 1s ease;
+}
+
+.fas.fa-bars {
+    font-size: 2rem;
+    color: 	#FFFFFF;
+    margin-right: 10px;
 }

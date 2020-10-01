@@ -1,11 +1,13 @@
 <?php
+function startDb(string $dbName): PDO {
+    $db = new PDO('mysql:host=db;dbname='.$dbName, 'root', 'password');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    return $db;
+}
 
-$db = new PDO('mysql:host=db;dbname=books', 'root', 'password');
-$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-function getBooksFromDb($db): array
+function getBooksFromDb(PDO $db): array
 {
-    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected`');
+    $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted` = 0');
     $query->execute();
     $result = $query->fetchAll();
     return $result;
@@ -13,17 +15,32 @@ function getBooksFromDb($db): array
 
 function displayBook(array $book): string
 {
-    if(array_key_exists('name', $book) && array_key_exists('author', $book) && array_key_exists('category', $book) && array_key_exists('released', $book)) {
+    if(
+        array_key_exists('name', $book) &&
+        array_key_exists('author', $book) &&
+        array_key_exists('category', $book) &&
+        array_key_exists('released', $book)
+    ) {
         return '<div class="item">' .
             '<div class="bookDetails">' .
-            '<p>' . $book['name'] . '</p>' .
-            '<p>' . $book['author'] . '</p>' .
-            '<p>' . $book['category'] . '</p>' .
-            '<p>' . $book['released'] . '</p>' .
+            '<p class="bookHeading">' . $book['name'] . '</p>' .
+            '<p class="bookAuthor">' . $book['author'] . '</p>' .
+            '<p class="bookCategory">' . $book['category'] . '</p>' .
+            '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
+            '<form method="POST"><input type="hidden" name="bookToBeDeleted" value="'.$book['name'].'">
+            <input type="submit" name="delete" value="Delete"/><br/>
+            </form>' .
             '</div>';
     } else {
         return '';
     }
+}
+
+function deleteBookFromDb(string $toDelete, PDO $db)
+{
+    $query = $db->prepare('UPDATE `booksCollected` SET `deleted` = 1 WHERE `name` = (?)');
+    $query->execute([$toDelete]);
+    header("Location: index.php");
 }
 ?>
