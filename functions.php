@@ -28,10 +28,8 @@ function displayBook(array $book): string
             '<p class="bookCategory">' . $book['category'] . '</p>' .
             '<p class="releaseYear">' . $book['released'] . '</p>' .
             '</div>' .
-            '<form method="POST"><input type="hidden" name="bookToBeDeleted" value="'.$book['name'].'">
-            <input type="submit" name="delete" value="Delete"/><br/>
-            </form>' .
-            '</div>';
+            '<form method="POST"><input type="hidden" name="bookToBeDeleted" value="'.$book['name'].'">'.
+            '<input type="submit" name="delete" value="Delete"/><br/></form></div>';
     } else {
         return '';
     }

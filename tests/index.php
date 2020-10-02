@@ -7,9 +7,7 @@ class index extends TestCase
     public function testSuccessDisplayBook()
     {
         $input = ['name' => 'Hello', 'author' => 'Talon Edge', 'category' => 'evil', 'released' => '2000'];
-        $expectedOutput = '<div class="item"><div class="bookDetails"><p class="bookHeading">Hello</p><p class="bookAuthor">Talon Edge</p><p class="bookCategory">evil</p><p class="releaseYear">2000</p></div></div><form method="POST"><input type="hidden" name="bookToBeDeleted" value="Hello">\n
-+            <input type="submit" name="delete" value="Delete"/><br/>\n
-+            </form></div>';
+        $expectedOutput = '<div class="item"><div class="bookDetails"><p class="bookHeading">Hello</p><p class="bookAuthor">Talon Edge</p><p class="bookCategory">evil</p><p class="releaseYear">2000</p></div><form method="POST"><input type="hidden" name="bookToBeDeleted" value="Hello"><input type="submit" name="delete" value="Delete"/><br/></form></div>';
         $result = displayBook($input);
         $this->assertEquals($expectedOutput, $result);
     }
