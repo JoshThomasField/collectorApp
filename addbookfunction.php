@@ -1,6 +1,6 @@
 <?php
 require 'functions.php';
-$db = startDb('books');
+$db = startDb('joshCollectorApp');
 
 if (
     !empty($_POST['bookName']) &&
