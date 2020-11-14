@@ -1,7 +1,7 @@
 <?php
 function startDb(string $dbName): PDO {
     $dbName = 'joshCollectorApp';
-    $db = new PDO('mysql:host=db;dbname='.$dbName, 'joshf', 'G?A)GnMpMrKp8Hoojxb6rVXdCpzi');
+    $db = new PDO('mysql:host=db;dbname='.$dbName, 'joshf', '6l84yoP_');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
 }
