@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="icon" type="image/png" href="signature(1).png"/>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="style.css" rel="stylesheet">
-    <link href="normalize.css" rel="stylesheet">
-    <title>Book Collector</title>
-</head>
 <?php
 require 'functions.php';
 $db = startDb('joshCollectorApp');
@@ -18,6 +8,16 @@ if(isset($_POST['delete'])){
     deleteBookFromDb($toDelete, $db);
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="signature(1).png"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
+    <link href="normalize.css" rel="stylesheet">
+    <title>Book Collector</title>
+</head>
 <body>
     <nav>
         <div class="mobile-nav">
