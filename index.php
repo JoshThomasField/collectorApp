@@ -1,13 +1,3 @@
-<?php
-require 'functions.php';
-$db = startDb('joshCollectorApp');
-$books = getBooksFromDb($db);
-
-if(isset($_POST['delete'])){
-    $toDelete = $_POST['bookToBeDeleted'];//
-    deleteBookFromDb($toDelete, $db);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +8,16 @@ if(isset($_POST['delete'])){
     <link href="normalize.css" rel="stylesheet">
     <title>Book Collector</title>
 </head>
+<?php
+require 'functions.php';
+$db = startDb('joshCollectorApp');
+$books = getBooksFromDb($db);
+
+if(isset($_POST['delete'])){
+    $toDelete = $_POST['bookToBeDeleted'];//
+    deleteBookFromDb($toDelete, $db);
+}
+?>
 <body>
     <nav>
         <div class="mobile-nav">
