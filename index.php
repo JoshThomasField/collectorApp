@@ -1,6 +1,3 @@
-<?php
-require 'functions.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +20,8 @@ require 'functions.php';
     <div class="content">
         <div class="collection">
             <?php
+            require 'functions.php';
+
             $db = startDb('joshCollectorApp');
             $books = getBooksFromDb($db);
 

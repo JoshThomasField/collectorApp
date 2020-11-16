@@ -1,7 +1,7 @@
 <?php
 function startDb(string $dbName): PDO {
     $dbName = 'joshCollectorApp';
-    $db = new PDO('mysql:host=db;dbname='.$dbName, 'joshf', '6l84yoP_');
+    $db = new PDO('mysql:host=localhost;dbname='.$dbName, 'joshf', '6l84yoP_');
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $db;
 }
@@ -11,6 +11,7 @@ function getBooksFromDb(PDO $db): array
     $query = $db->prepare('SELECT `name`, `author`, `category`, `released` FROM `booksCollected` WHERE `deleted` = 0');
     $query->execute();
     $result = $query->fetchAll();
+    $result = htmlspecialchars($result, ENT_QUOTES, 'UTF-8');
     return $result;
 }
 
