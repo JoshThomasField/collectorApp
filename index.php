@@ -30,6 +30,7 @@
                 deleteBookFromDb($toDelete, $db);
             }
             foreach($books as $book) {
+                $book = htmlspecialchars($book, ENT_QUOTES, 'UTF-8');
                 echo displayBook($book);
             }
             ?>
